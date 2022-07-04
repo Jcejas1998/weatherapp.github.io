@@ -16,8 +16,6 @@
   flex-direction: column;
   padding: 2rem;
   justify-content: space-around;
-  object-fit: fill;
-
 }
 
 .weather_location{

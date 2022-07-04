@@ -19,26 +19,20 @@ function App() {
 
   const fetchData = async (e) =>{
     e.preventDefault()
+    const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=${process.env.REACT_APP_API_KEY}&units=metric`)
+    const data = await res.data
 
-    try{
+      setDegrees(data.main.temp)
+      setLocation(data.name)
+      setDescription(data.weather[0].description)
+      setIcon(data.weather[0].icon)
+      setHumidity(data.main.humidity)
+      setWind(data.wind.speed)
+      setCountry(data.sys.country)
 
-      const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=${API_KEY}&units=metric`)
-      const data = await res.data
-  
-        setDegrees(data.main.temp)
-        setLocation(data.name)
-        setDescription(data.weather[0].description)
-        setIcon(data.weather[0].icon)
-        setHumidity(data.main.humidity)
-        setWind(data.wind.speed)
-        setCountry(data.sys.country)
-  
-         setDataFetched(true) 
-    }catch(err){
-      console.log(err)
-      alert('please enter a valid location')
-    }
+       setDataFetched(true) 
 
+    console.log(data);
   }
 
   const defaultDataFetched = async ()=>{

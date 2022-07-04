@@ -34,10 +34,7 @@ function App() {
         setCountry(data.sys.country)
   
          setDataFetched(true) 
-    }catch(err){
-      console.log(err)
-      alert('please enter a valid location')
-    }
+    }catch(err)
 
   }
 
